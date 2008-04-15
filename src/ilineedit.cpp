@@ -21,6 +21,7 @@
 #include <QDebug>
 #include <QPaintEvent>
 #include <QPainter>
+#include <QStyleOptionFrameV2>
 
 #include "ilineedit.h"
 
@@ -50,14 +51,20 @@ void iLineEdit::paintEvent(QPaintEvent *event)
   
   if (!text().isEmpty())
     return;
-  
-  QPainter painter;
-  painter.begin(this);
-  painter.setPen(Qt::gray);
 
-  const int margin = 6;
-  QRect r = rect();
-  r.adjust(margin, 0, -margin, 0);
-  painter.drawText(r, Qt::TextSingleLine|Qt::AlignLeft|Qt::AlignVCenter, m_bgText);
+  const int margin = 2;
+
+  QStyleOptionFrameV2 panel;
+  initStyleOption(&panel);
+  QRect r = style()->subElementRect(QStyle::SE_LineEditContents, &panel, this);
+  QFontMetrics fm = fontMetrics();
+  int horizontalMargin = this->x();
+  QRect lineRect(margin + r.x(), r.y() + (r.height() - fm.height() + 1) / 2,
+                 r.width() - 2 * margin, fm.height());
+
+  QPainter painter(this);
+  painter.setPen(Qt::gray);
+  painter.drawText(lineRect, Qt::AlignLeft|Qt::AlignVCenter, m_bgText);
+ 
   painter.end();
 }
