@@ -58,6 +58,6 @@ void iLineEdit::paintEvent(QPaintEvent *event)
   const int margin = 6;
   QRect r = rect();
   r.adjust(margin, 0, -margin, 0);
-  painter.drawText(r, Qt::AlignLeft|Qt::AlignVCenter, m_bgText);
+  painter.drawText(r, Qt::TextSingleLine|Qt::AlignLeft|Qt::AlignVCenter, m_bgText);
   painter.end();
 }
