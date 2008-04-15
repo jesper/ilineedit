@@ -24,9 +24,24 @@
 
 #include "ilineedit.h"
 
+iLineEdit::iLineEdit(QWidget *parent) 
+	: QLineEdit(parent)
+{
+}
+
 iLineEdit::iLineEdit(const QString &bgText, QWidget *parent) 
 	: QLineEdit(parent), m_bgText(bgText)
 {
+}
+
+void iLineEdit::setBackgroundText(const QString &bgText)
+{
+  m_bgText = bgText;
+}
+
+QString iLineEdit::backgroundText() const
+{
+  return m_bgText;
 }
 
 void iLineEdit::paintEvent(QPaintEvent *event)

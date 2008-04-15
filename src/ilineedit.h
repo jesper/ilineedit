@@ -25,7 +25,11 @@
 class iLineEdit : public QLineEdit
 {
 public:
+	iLineEdit(QWidget *parent = 0);
 	iLineEdit(const QString &bgText, QWidget *parent = 0);
+
+	void setBackgroundText(const QString& bgtext);
+	QString backgroundText() const;
 
 private:
   void paintEvent(QPaintEvent *event);
