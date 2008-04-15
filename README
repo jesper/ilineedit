@@ -1,0 +1,6 @@
+iLineEdit is written by Jesper Thomschutz, 2008, jesper@jespersaur.com
+
+Licensed under GPLv3.
+
+To use install Qt4 and execute the following:
+qmake && make && ./ilineedit
