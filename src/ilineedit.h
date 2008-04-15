@@ -25,6 +25,9 @@
 class iLineEdit : public QLineEdit
 {
 Q_OBJECT
+
+Q_PROPERTY(QString backgroundText READ backgroundText WRITE setBackgroundText)
+
 public:
 	iLineEdit(QWidget *parent = 0);
 	iLineEdit(const QString &bgText, QWidget *parent = 0);
